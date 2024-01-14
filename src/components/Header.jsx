@@ -7,6 +7,8 @@ import { FaLinkedin } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { Link, useLocation } from 'react-router-dom';
+import { FaHeart } from "react-icons/fa6";
+import { FaCartShopping } from "react-icons/fa6";
 
  
 
@@ -15,6 +17,7 @@ const Header = () => {
      
     const [showShidebar, setShowShidebar] = useState(true);
     const user = true
+    const wishlist_count = 3
 
     return (
         <div className='w-full bg-white'>
@@ -104,6 +107,37 @@ const Header = () => {
                         </li>
 
                     </ul>
+
+                <div className='flex md-lg:hidden justify-center items-center gap-5'>
+                    <div className='flex justify-center gap-5'>
+                        <div className='relative flex justify-center items-center cursor-pointer w-[35px] h-[35px] rounded-full bg-[#e2e2e2]'>
+                            <span className='text-xl text-green-500'><FaHeart /></span>
+            <div className='w-[20px] h-[20px] absolute bg-red-500 rounded-full text-white flex justify-center items-center -top-[3px] -right-[5px] '>
+                {
+                    wishlist_count
+                }
+
+                                </div>
+                        </div>
+
+                        <div className='relative flex justify-center items-center cursor-pointer w-[35px] h-[35px] rounded-full bg-[#e2e2e2]'>
+                            <span className='text-xl text-green-500'><FaCartShopping  /></span>
+            <div className='w-[20px] h-[20px] absolute bg-red-500 rounded-full text-white flex justify-center items-center -top-[3px] -right-[5px] '>
+                {
+                    wishlist_count
+                }
+
+                                </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+
+
 
                 </div>
 
