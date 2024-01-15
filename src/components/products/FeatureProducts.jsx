@@ -1,4 +1,7 @@
 import React from 'react';
+import { FaEye, FaRegHeart } from "react-icons/fa";
+import { RiShoppingCartLine } from "react-icons/ri";
+
 
 const FeatureProducts = () => {
     return (
@@ -17,10 +20,32 @@ const FeatureProducts = () => {
             
         <div className='flex justify-center items-center absolute text-white w-[38px] h-[38px] rounded-full bg-red-500 font-semibold text-xs left-2 top-2'>8% </div> 
 
-        <img className='sm:w-full h-[240px]' src={`http://localhost:3000/images/products/${i+1}.webp`} alt="" />           
+        <img className='sm:w-full w-full h-[240px]' src={`http://localhost:3000/images/products/${i+1}.webp`} alt="" />  
 
+        <ul className='flex transition-all duration-700 -bottom-10 justify-center items-center gap-2 absolute w-full group-hover:bottom-3'>
+            <li className='w-[38px] h-[38px] cursor-pointer bg-white flex justify-center items-center rounded-full hover:bg-[#059473] hover:text-white hover:rotate-[720deg] transition-all'>
+            <FaRegHeart />
+            </li>
+            <li className='w-[38px] h-[38px] cursor-pointer bg-white flex justify-center items-center rounded-full hover:bg-[#059473] hover:text-white hover:rotate-[720deg] transition-all'>
+            <FaEye />
+            </li>
+            <li className='w-[38px] h-[38px] cursor-pointer bg-white flex justify-center items-center rounded-full hover:bg-[#059473] hover:text-white hover:rotate-[720deg] transition-all'>
+            <RiShoppingCartLine />
+            </li>
+        </ul>    
+            </div>
+
+        <div className='py-3 text-slate-600 px-2'>
+            <h2 className='font-bold'>Product Name </h2>
+            <div className='flex justify-start items-center gap-3'>
+                <span className='text-md font-semibold'>$656</span>
 
             </div>
+        </div>    
+
+
+
+
         </div>
         )
     }
