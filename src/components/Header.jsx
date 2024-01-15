@@ -10,13 +10,13 @@ import { Link, useLocation } from 'react-router-dom';
 import { FaHeart } from "react-icons/fa6";
 import { FaCartShopping } from "react-icons/fa6";
 import { FaPhoneAlt } from "react-icons/fa";
-
- 
+import { IoIosArrowDown } from "react-icons/io"; 
 
 const Header = () => {
     const {pathname} = useLocation()
      
     const [showShidebar, setShowShidebar] = useState(true);
+    const [categoryShow, setCategoryShow] = useState(true);
     const user = true
     const wishlist_count = 3
 
@@ -217,20 +217,37 @@ const Header = () => {
              <span>support@gmail.com</span>
             </li>
 
-        </ul>
-
-
-
-
-
-
+        </ul> 
 
                 </div> 
-            </div> 
+            </div>  
+    </div>
 
 
+    <div className='w-[85%] lg:w-[90%] mx-auto'>
+        <div className='flex w-full flex-wrap md-lg:gap-8'>
+            <div className='w-3/12 md-lg:w-full'>
+                <div className='bg-white relative'>
+                   <div onClick={() => setCategoryShow(!categoryShow) } className='h-[50px] bg-[#059473] text-white flex justify-center md-lg:justify-between md-lg:px-6 items-center gap-3 font-bold text-md cursor-pointer'>
+            <div className='flex justify-center items-center gap-3'>
+                <span><FaList/></span>
+                <span>All Category </span>
+            </div>
+            <span className='pt-1'><IoIosArrowDown /></span>
+                    </div>
+
+        <div className={`${categoryShow ? 'h-0' : 'h-[400px]'} overflow-hidden transition-all md-lg:relative duration-500 absolute z-[99999] bg-[#dbf3ed] w-full border-x`}>
+
+        </div>
+
+
+                </div>
+            </div>
+        </div>
 
     </div>
+
+
 
 
 
