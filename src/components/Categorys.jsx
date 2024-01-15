@@ -51,7 +51,13 @@ const Categorys = () => {
 
     return (
         <div className='w-[87%] mx-auto relative'>
-             
+            <div className='w-full'>
+            <div className='text-center flex justify-center items-center flex-col text-3xl text-slate-600 font-bold relative pb-[35px]'>
+                <h2>Top Category </h2>
+                <div className='w-[100px] h-[2px] bg-[#059473] mt-4'></div>
+            </div>
+            </div>
+
                 <Carousel
                     autoPlay={true}
                     infinite={true}
