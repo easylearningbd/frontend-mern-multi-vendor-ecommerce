@@ -1,9 +1,10 @@
 import React from 'react';
 import Carousel from 'react-multi-carousel';
 import { Link } from 'react-router-dom';
-import 'react-multi-carousel/lib/styles.css'
-
-const Products = () => {
+import 'react-multi-carousel/lib/styles.css' 
+import { IoIosArrowBack,IoIosArrowForward } from "react-icons/io";
+  
+const Products = ({title}) => {
     const products = [
         [1,2,3],
         [4,5,6],
@@ -28,13 +29,28 @@ const Products = () => {
         },
     }
 
-    const ButtonGroup = () => {
+    const ButtonGroup = ({next,previous}) => {
+        return (
+            <div className='flex justify-between items-center'>
+                <div className='text-xl font-bold text-slate-600'> {title} </div>
+                <div className='flex justify-center items-center gap-3 text-slate-600'>
+                    <button onClick={()=>previous()} className='w-[30px] h-[30px] flex justify-center items-center bg-slate-300 border border-slate-200'>
+                        <IoIosArrowBack />
+                    </button>
+                    <button onClick={()=>next()} className='w-[30px] h-[30px] flex justify-center items-center bg-slate-300 border border-slate-200'>
+                    <IoIosArrowForward /> 
+
+                    </button>
+                </div>
+
+            </div>
+        )
 
     }
 
 
     return (
-        <div className='flex gap-8'>
+        <div className='flex gap-8 flex-col-reverse'>
             <Carousel
                     autoPlay={false}
                     infinite={false}
@@ -44,15 +60,24 @@ const Products = () => {
                     renderButtonGroupOutside={true}
                     customButtonGroup={<ButtonGroup/>}
                 >
-        <div className='flex flex-col justify-start gap-2'>
-            <Link to='#'>
-                <img src="" alt="" />
+       {
+        products.map((p,i)=> {
+            return(
+                <div className='flex flex-col justify-start gap-2'>
+               {
+                p.map((pl, j) =>  <Link className='flex justify-start items-start' to='#'>
+                <img className='w-[110px] h-[110px]' src={`http://localhost:3000/images/products/${pl}.webp`} alt="" />
                 <div className='px-3 flex justify-start items-start gap-1 flex-col text-slate-600'>
                     <h2>Product Name </h2>
-                    <span>$434</span> 
-                </div>
+                    <span className='text-lg font-bold'>$434</span> 
+                </div>  
             </Link>
-        </div>            
+                 )
+               }
+            </div>   
+            )
+        })
+       }         
                 
                 </Carousel>   
         </div>
