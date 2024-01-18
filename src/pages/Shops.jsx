@@ -4,6 +4,8 @@ import Footer from '../components/Footer';
 import { Link } from 'react-router-dom';
 import { IoIosArrowForward } from "react-icons/io";
 import { Range } from 'react-range';
+import {AiFillStar} from 'react-icons/ai'
+import {CiStar} from 'react-icons/ci'
 
 const Shops = () => {
     const [filter, setFilter] = useState(true)
@@ -19,6 +21,7 @@ const Shops = () => {
     ]
 
     const [state, setState] = useState({values: [50, 1500]})
+    const [rating, setRating] = useState('')
 
 
     return (
@@ -79,14 +82,71 @@ const Shops = () => {
                 )} 
              />  
          </div>
-         <span className='text-slate-800 font-bold text-lg'>${Math.floor(state.values[0])} - ${Math.floor(state.values[1])}</span>            
+         <span className='text-slate-800 font-bold text-lg'>${Math.floor(state.values[0])} - ${Math.floor(state.values[1])}</span>  
+           </div>
+         </div>
+
+         <div className='py-3 flex flex-col gap-4'>
+            <h2 className='text-3xl font-bold mb-3 text-slate-600'>Rating </h2>
+            <div className='flex flex-col gap-3'>
+                 <div onClick={() => setRating(5)} className='text-orange-500 flex justify-start items-start gap-2 text-xl cursor-pointer'>
+                    <span><AiFillStar/> </span>
+                    <span><AiFillStar/> </span>
+                    <span><AiFillStar/> </span>
+                    <span><AiFillStar/> </span>
+                    <span><AiFillStar/> </span>
+                  </div>
+
+                  <div onClick={() => setRating(4)} className='text-orange-500 flex justify-start items-start gap-2 text-xl cursor-pointer'>
+                    <span><AiFillStar/> </span>
+                    <span><AiFillStar/> </span>
+                    <span><AiFillStar/> </span>
+                    <span><AiFillStar/> </span>
+                    <span><CiStar/> </span>
+                  </div>
+
+                  <div onClick={() => setRating(3)} className='text-orange-500 flex justify-start items-start gap-2 text-xl cursor-pointer'>
+                    <span><AiFillStar/> </span>
+                    <span><AiFillStar/> </span>
+                    <span><AiFillStar/> </span>
+                    <span><CiStar/> </span>
+                    <span><CiStar/> </span>
+                  </div>
+
+                  <div onClick={() => setRating(2)} className='text-orange-500 flex justify-start items-start gap-2 text-xl cursor-pointer'>
+                    <span><AiFillStar/> </span>
+                    <span><AiFillStar/> </span>
+                    <span><CiStar/> </span>
+                    <span><CiStar/> </span>
+                    <span><CiStar/> </span>
+                  </div>
+
+                  <div onClick={() => setRating(1)} className='text-orange-500 flex justify-start items-start gap-2 text-xl cursor-pointer'>
+                    <span><AiFillStar/> </span>
+                    <span><CiStar/> </span>
+                    <span><CiStar/> </span>
+                    <span><CiStar/> </span>
+                    <span><CiStar/> </span>
+                  </div>
+
+                  <div className='text-orange-500 flex justify-start items-start gap-2 text-xl cursor-pointer'>
+                  <span><CiStar/> </span>
+                  <span><CiStar/> </span>
+                  <span><CiStar/> </span>
+                  <span><CiStar/> </span>
+                  <span><CiStar/> </span>
+                  </div>
+
+
+
+            </div> 
+         </div>
 
 
 
 
 
-                </div>
-            </div>
+
 
 
             </div> 
