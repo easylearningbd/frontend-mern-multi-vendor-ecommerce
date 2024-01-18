@@ -19,13 +19,10 @@ const Shops = () => {
                         <IoIosArrowForward />
                         </span>
                         <span>Shop </span>
-                </div>
-                    </div>
-
-                </div>
-
-            </div>
-
+                      </div>
+                    </div> 
+                </div> 
+            </div> 
            </section>
 
            <Footer/>
