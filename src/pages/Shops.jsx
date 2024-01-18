@@ -7,6 +7,8 @@ import { Range } from 'react-range';
 import {AiFillStar} from 'react-icons/ai'
 import {CiStar} from 'react-icons/ci' 
 import Products from '../components/products/Products';
+import {BsFillGridFill} from 'react-icons/bs'
+import {FaThList} from 'react-icons/fa'
 
 const Shops = () => {
     const [filter, setFilter] = useState(true)
@@ -23,6 +25,7 @@ const Shops = () => {
 
     const [state, setState] = useState({values: [50, 1500]})
     const [rating, setRating] = useState('')
+    const [styles, setStyles] = useState('grid')
 
 
     return (
@@ -143,11 +146,41 @@ const Shops = () => {
         
         <div className='py-5 flex flex-col gap-4 md:hidden'>
             <Products title='Latest Product' />
+        </div> 
+          </div>
+
+        <div className='w-9/12 md-lg:w-8/12 md:w-full'>
+            <div className='pl-8 md:pl-0'>
+                <div className='py-4 bg-white mb-10 px-3 rounded-md flex justify-between items-start border'>
+                    <h2 className='text-lg font-medium text-slate-600'>14 Products </h2>
+        <div className='flex justify-center items-center gap-3'>
+            <select className='p-1 border outline-0 text-slate-600 font-semibold' name="" id="">
+                <option value="">Sort By</option>
+                <option value="low-to-high">Low to High Price</option>
+                <option value="high-to-low">High to Low Price </option>
+            </select>
+        <div className='flex justify-center items-start gap-4 md-lg:hidden'>
+            <div onClick={()=> setStyles('grid')} className={`p-2 ${styles === 'grid' && 'bg-slate-300'} text-slate-600 hover:bg-slate-300 cursor-pointer rounded-sm `} >
+                  <BsFillGridFill/>  
+            </div>
+            <div onClick={()=> setStyles('list')} className={`p-2 ${styles === 'list' && 'bg-slate-300'} text-slate-600 hover:bg-slate-300 cursor-pointer rounded-sm `} >
+                  <FaThList/>  
+            </div>
+
+        </div>
+
+
         </div>
 
 
 
-            </div>
+                </div> 
+            </div> 
+         </div>  
+
+
+
+
             </div>
             </div> 
            </section>
