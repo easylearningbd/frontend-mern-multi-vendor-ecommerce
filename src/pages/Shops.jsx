@@ -5,7 +5,8 @@ import { Link } from 'react-router-dom';
 import { IoIosArrowForward } from "react-icons/io";
 import { Range } from 'react-range';
 import {AiFillStar} from 'react-icons/ai'
-import {CiStar} from 'react-icons/ci'
+import {CiStar} from 'react-icons/ci' 
+import Products from '../components/products/Products';
 
 const Shops = () => {
     const [filter, setFilter] = useState(true)
@@ -81,7 +82,7 @@ const Shops = () => {
     
                 )} 
              />  
-         </div>
+         <div>
          <span className='text-slate-800 font-bold text-lg'>${Math.floor(state.values[0])} - ${Math.floor(state.values[1])}</span>  
            </div>
          </div>
@@ -135,20 +136,19 @@ const Shops = () => {
                   <span><CiStar/> </span>
                   <span><CiStar/> </span>
                   <span><CiStar/> </span>
-                  </div>
-
-
-
+                  </div> 
             </div> 
          </div>
+        
+        
+        <div className='py-5 flex flex-col gap-4 md:hidden'>
+            <Products title='Latest Product' />
+        </div>
 
 
 
-
-
-
-
-
+            </div>
+            </div>
             </div> 
            </section>
 
