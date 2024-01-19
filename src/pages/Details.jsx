@@ -7,6 +7,10 @@ import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css'
 import Rating from '../components/Rating';
 import { FaHeart } from "react-icons/fa6";
+import { FaFacebookF} from "react-icons/fa";
+import { FaTwitter } from "react-icons/fa6";
+import { FaLinkedin } from "react-icons/fa";
+import { FaGithub } from "react-icons/fa";
 
 
 
@@ -155,14 +159,50 @@ const Details = () => {
                 <div>
                     <div className='h-[50px] w-[50px] flex justify-center items-center cursor-pointer hover:shadow-lg hover:shadow-cyan-500/40 bg-cyan-500 text-white'>
                     <FaHeart />
-                    </div>
-
-                </div>
-
-
-
+                    </div> 
+                </div> 
             </div>  
-        </div> 
+
+
+        <div className='flex py-5 gap-5'>
+            <div className='w-[150px] text-black font-bold text-xl flex flex-col gap-5'>
+                <span>Availability</span>
+                <span>Share On</span> 
+            </div> 
+            <div className='flex flex-col gap-5'>
+                <span className={`text-${stock ? 'green' : 'red'}-500`}>
+                    {stock ? `In Stock(${stock})` : 'Out Of Stock'}
+                </span>
+
+    <ul className='flex justify-start items-center gap-3'>
+        <li>
+            <a className='w-[38px] h-[38px] hover:bg-[#059473] hover:text-white flex justify-center items-center bg-indigo-500 rounded-full text-white' href="#"> <FaFacebookF /> </a>
+        </li>
+        <li>
+            <a className='w-[38px] h-[38px] hover:bg-[#059473] hover:text-white flex justify-center items-center bg-cyan-500 rounded-full text-white' href="#"> <FaTwitter /> </a>
+        </li>
+        <li>
+            <a className='w-[38px] h-[38px] hover:bg-[#059473] hover:text-white flex justify-center items-center bg-purple-500 rounded-full text-white' href="#"> <FaLinkedin /> </a>
+        </li>
+        <li>
+            <a className='w-[38px] h-[38px] hover:bg-[#059473] hover:text-white flex justify-center items-center bg-blue-500 rounded-full text-white' href="#"> <FaGithub /> </a>
+        </li>
+    </ul> 
+
+            </div>
+          </div>
+
+          <div className='flex gap-3'>
+                {
+                    stock ? <button className='px-8 py-3 h-[50px] cursor-pointer hover:shadow-lg hover:shadow-green-500/40 bg-[#247462] text-white'>Buy Now</button> : ''
+                }
+                <Link to='#' className='px-8 py-3 h-[50px] cursor-pointer hover:shadow-lg hover:shadow-red-500/40 bg-red-500 text-white'>
+                    Chat Seller
+                </Link>
+            </div>
+
+
+        </div>  
 
             </div> 
        </div> 
