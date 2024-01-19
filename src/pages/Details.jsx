@@ -1,14 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { Link } from 'react-router-dom';
 import { IoIosArrowForward } from "react-icons/io"; 
 import Carousel from 'react-multi-carousel'; 
 import 'react-multi-carousel/lib/styles.css'
+import Rating from '../components/Rating';
 
 
 const Details = () => {
     const images = [1,2,3,4,5,6]
+    const [image, setImage] = useState('')
+    const discount = 10
+    const stock = 3
 
     const responsive = {
         superLargeDesktop: {
@@ -81,7 +85,7 @@ const Details = () => {
             <div className='grid grid-cols-2 md-lg:grid-cols-1 gap-8'>
                 <div>
                 <div className='p-5 border'>
-                    <img className='h-[400px] w-full' src="http://localhost:3000/images/products/2.webp" alt="" />
+                    <img className='h-[400px] w-full' src={image ? `http://localhost:3000/images/products/${image}.webp` : `http://localhost:3000/images/products/${images[2]}.webp`} alt="" />
                 </div>
             <div className='py-3'>
                 {
@@ -94,7 +98,7 @@ const Details = () => {
                     {
                        images.map((img, i) => {
                         return (
-                            <div>
+                            <div key={i}  onClick={() => setImage(img)}>
                                <img className='h-[120px] cursor-pointer' src={`http://localhost:3000/images/products/${img}.webp`} alt="" /> 
                             </div>
                         )
@@ -105,8 +109,36 @@ const Details = () => {
                 }
            </div>    
            </div>
-            </div>
-       
+
+        <div className='flex flex-col gap-5'>
+                <div className='text-3xl text-slate-600 font-bold'>
+                    <h3>Product Name </h3>
+                </div>
+                <div className='flex justify-start items-center gap-4'>
+                    <div className='flex text-xl'>
+                        <Rating ratings={4.5} />
+                    </div>
+                    <span className='text-green-500'>(24 reviews)</span> 
+                </div>
+
+         <div className='text-2xl text-red-500 font-bold flex gap-3'>
+            {
+                discount !== 0 ? <>
+                Price : <h2 className='line-through'>$500</h2>
+                <h2>${500 - Math.floor((500 * discount) / 100)} (-{discount}%) </h2>
+                
+                </> : <h2> Price : $200 </h2>
+            }
+          </div>       
+
+
+        </div>
+
+
+
+
+
+            </div> 
        </div> 
         </section>
 
