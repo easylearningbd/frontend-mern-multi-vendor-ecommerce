@@ -6,6 +6,8 @@ import { IoIosArrowForward } from "react-icons/io";
 import Carousel from 'react-multi-carousel'; 
 import 'react-multi-carousel/lib/styles.css'
 import Rating from '../components/Rating';
+import { FaHeart } from "react-icons/fa6";
+
 
 
 const Details = () => {
@@ -129,14 +131,38 @@ const Details = () => {
                 
                 </> : <h2> Price : $200 </h2>
             }
-          </div>       
+          </div> 
+
+          <div className='text-slate-600'>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley</p>
+           </div> 
+
+            <div className='flex gap-3 pb-10 border-b'>
+                {
+                    stock ? <>
+                    <div className='flex bg-slate-200 h-[50px] justify-center items-center text-xl'>
+                        <div className='px-6 cursor-pointer'>-</div>
+                        <div className='px-6'>2</div>
+                        <div className='px-6 cursor-pointer'>+</div>
+                    </div>
+                    <div>
+                        <button className='px-8 py-3 h-[50px] cursor-pointer hover:shadow-lg hover:shadow-green-500/40 bg-[#059473] text-white'>Add To Card</button>
+                    </div>
+                    
+                    </> : ''
+                }
+
+                <div>
+                    <div className='h-[50px] w-[50px] flex justify-center items-center cursor-pointer hover:shadow-lg hover:shadow-cyan-500/40 bg-cyan-500 text-white'>
+                    <FaHeart />
+                    </div>
+
+                </div>
 
 
-        </div>
 
-
-
-
+            </div>  
+        </div> 
 
             </div> 
        </div> 
