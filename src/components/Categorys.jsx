@@ -15,7 +15,7 @@ const Categorys = () => {
         'Home Decor',
         'Smart Watches',
     ]
-
+ 
     const responsive = {
         superLargeDesktop: {
             breakpoint: { max: 4000, min: 3000 },
