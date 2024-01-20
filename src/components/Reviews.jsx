@@ -138,8 +138,7 @@ const Reviews = () => {
                     <textarea required className='border outline-0 p-3 w-full' name="" id="" cols="30" rows="5"></textarea>
                 <div className='mt-2'>
             <button className='py-1 px-5 bg-indigo-500 text-white rounded-sm'>Submit</button>
-                </div>
-
+                </div> 
                  
                  </form>
 
