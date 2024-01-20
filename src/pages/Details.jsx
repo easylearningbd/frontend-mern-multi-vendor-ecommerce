@@ -12,6 +12,10 @@ import { FaTwitter } from "react-icons/fa6";
 import { FaLinkedin } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
 import Reviews from '../components/Reviews';
+import {Pagination } from 'swiper/modules';
+import 'swiper/css'; 
+import 'swiper/css/pagination';
+import {Swiper, SwiperSlide } from 'swiper/react';
 
 
 
@@ -265,16 +269,69 @@ const Details = () => {
 
     </div>
 </div>
-</div>
+</div> 
 
-
-
-
-            </div> 
-        
-        
+    </div>  
         </div>
         </section>
+
+
+<section>
+<div className='w-[85%] md:w-[80%] sm:w-[90%] lg:w-[90%] h-full mx-auto'>
+<h2 className='text-2xl py-8 text-slate-600'>Related Products </h2>
+<div>
+    <Swiper
+    slidesPerView='auto'
+    breakpoints={{
+        1280 : {
+            slidesPerView: 3
+        },
+        565 : {
+            slidesPerView: 2
+        }
+    }}
+    spaceBetween={25}
+    loop={true}
+    pagination={{
+        clickable: true,
+        el: '.custom_bullet'
+    }}
+    modules={[Pagination]}
+    className='mySwiper' 
+    > 
+
+    {
+        [1,2,3,4,5,6].map((p, i) => {
+            return (
+
+                <SwiperSlide key={i}>
+                    <Link className='block'>
+                        <div className='relative h-[270px]'>
+                            <div className='w-full h-full'>
+                    <img src={`http://localhost:3000/images/products/${p}.webp`} alt="" />
+                    <div className='absolute h-full w-full top-0 left-0 bg-[#000] opacity-25 hover:opacity-50 transition-all duration-500'> 
+                    </div>
+                           </div>
+            {
+            discount !== 0 && <div className='flex justify-center items-center absolute text-white w-[38px] h-[38px] rounded-full bg-red-500 font-semibold text-xs left-2 top-2'>{discount}%
+            </div>
+            }
+
+
+                        </div>
+                    </Link>
+
+                </SwiperSlide>
+
+            )
+        })
+    }
+    
+    </Swiper>
+</div>
+
+</div>
+</section>
 
 
 
