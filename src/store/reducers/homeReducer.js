@@ -7,7 +7,7 @@ export const get_category = createAsyncThunk(
     async(_, { fulfillWithValue }) => {
         try {
             const {data} = await api.get('/home/get-categorys')
-            console.log(data)
+            // console.log(data)
             return fulfillWithValue(data)
         } catch (error) {
             console.log(error.respone)
@@ -28,7 +28,10 @@ export const homeReducer = createSlice({
  
     },
     extraReducers: (builder) => {
-         
+        builder
+        .addCase(get_category.fulfilled, (state, { payload }) => {
+            state.categorys = payload.categorys;
+        })
 
     }
 })
