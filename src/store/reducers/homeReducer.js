@@ -36,6 +36,10 @@ export const homeReducer = createSlice({
     name: 'home',
     initialState:{
         categorys : [],
+        products : [],
+        latest_product : [],
+        topRated_product : [],
+        discount_product : [],
     },
     reducers : {
  
@@ -44,6 +48,12 @@ export const homeReducer = createSlice({
         builder
         .addCase(get_category.fulfilled, (state, { payload }) => {
             state.categorys = payload.categorys;
+        })
+        .addCase(get_products.fulfilled, (state, { payload }) => {
+            state.products = payload.products;
+            state.latest_product = payload.latest_product;
+            state.topRated_product = payload.topRated_product;
+            state.discount_product = payload.discount_product;
         })
 
     }
