@@ -60,6 +60,21 @@ const Shops = () => {
          )
     },[state.values[0],state.values[1],category,rating,sortPrice,pageNumber])
 
+    const resetRating = () => {
+        setRating('')
+        dispatch(
+            query_products({
+                low: state.values[0],
+                high: state.values[1],
+                category,
+                rating: '',
+                sortPrice,
+                pageNumber
+            })
+         )
+    }
+    
+
     return (
         <div>
            <Header/>
@@ -165,7 +180,7 @@ const Shops = () => {
                     <span><CiStar/> </span>
                   </div>
 
-                  <div className='text-orange-500 flex justify-start items-start gap-2 text-xl cursor-pointer'>
+                  <div onClick={resetRating} className='text-orange-500 flex justify-start items-start gap-2 text-xl cursor-pointer'>
                   <span><CiStar/> </span>
                   <span><CiStar/> </span>
                   <span><CiStar/> </span>
