@@ -37,6 +37,16 @@ const Shops = () => {
     const [parPage, setParPage] = useState(1)
     const [pageNumber, setPageNumber] = useState(1)
 
+    const [sortPrice, setSortPrice] = useState('')
+    const [category, setCategory] = useState('')
+    const queryCategory = (e, value) => {
+        if (e.target.checked) {
+            setCategory(value)
+        } else {
+            setCategory('')
+        }
+    }
+
 
     return (
         <div>
@@ -67,14 +77,14 @@ const Shops = () => {
             <div className='w-full flex flex-wrap'>
                 <div className={`w-3/12 md-lg:w-4/12 md:w-full pr-8 ${filter ? 'md:h-0 md:overflow-hidden md:mb-6' : 'md:h-auto md:overflow-auto md:mb-0' } `}>
                     <h2 className='text-3xl font-bold mb-3 text-slate-600'>Category </h2>
-                    <div className='py-2'>
-                        {
-                            categorys.map((c,i) => <div key={i} className='flex justify-start items-center gap-2 py-1'>
-                                <input type="checkbox" id={c.name} />
-                                <label className='text-slate-600 block cursor-pointer' htmlFor={c.name}>{c.name}</label>
-                            </div>)
-                        }
-                    </div>
+        <div className='py-2'>
+            {
+                categorys.map((c,i) => <div key={i} className='flex justify-start items-center gap-2 py-1'>
+                    <input checked={category === c.name ? true : false} onChange={(e)=>queryCategory(e,c.name)} type="checkbox" id={c.name} />
+                    <label className='text-slate-600 block cursor-pointer' htmlFor={c.name}>{c.name}</label>
+                </div>)
+            }
+        </div>
 
         <div className='py-2 flex flex-col gap-5'>
             <h2 className='text-3xl font-bold mb-3 text-slate-600'>Price</h2>
@@ -164,7 +174,7 @@ const Shops = () => {
                 <div className='py-4 bg-white mb-10 px-3 rounded-md flex justify-between items-start border'>
                     <h2 className='text-lg font-medium text-slate-600'>14 Products </h2>
         <div className='flex justify-center items-center gap-3'>
-            <select className='p-1 border outline-0 text-slate-600 font-semibold' name="" id="">
+            <select onChange={(e)=>setSortPrice(e.target.value)} className='p-1 border outline-0 text-slate-600 font-semibold' name="" id="">
                 <option value="">Sort By</option>
                 <option value="low-to-high">Low to High Price</option>
                 <option value="high-to-low">High to Low Price </option>
