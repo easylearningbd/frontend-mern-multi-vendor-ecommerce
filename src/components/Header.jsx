@@ -22,7 +22,7 @@ const Header = () => {
      
     const [showShidebar, setShowShidebar] = useState(true);
     const [categoryShow, setCategoryShow] = useState(true);
-    const user = true
+    const user = false
     const wishlist_count = 3
      
 
@@ -71,7 +71,7 @@ const Header = () => {
             user ? <Link className='flex cursor-pointer justify-center items-center gap-2 text-sm text-black' to='/dashboard'>
                 <span> <FaUser/> </span>
                 <span>Kazi Ariyan </span>
-                 </Link> : <Link className='flex cursor-pointer justify-center items-center gap-2 text-sm text-black' to='/login'>
+                 </Link> : <Link to='/login' className='flex cursor-pointer justify-center items-center gap-2 text-sm text-black'>
                 <span> <FaLock /> </span>
                 <span>Login </span>
                  </Link>

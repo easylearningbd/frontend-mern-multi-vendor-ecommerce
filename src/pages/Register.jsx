@@ -4,7 +4,7 @@ import Footer from '../components/Footer';
 import { FaFacebookF } from "react-icons/fa6";
 import { FaGoogle } from "react-icons/fa6"; 
 import { Link } from 'react-router-dom';
-
+ 
 const Register = () => {
 
     const [state, setState] = useState({
