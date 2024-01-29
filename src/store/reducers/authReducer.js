@@ -16,6 +16,21 @@ export const customer_register = createAsyncThunk(
 )
 // End Method 
 
+export const customer_login = createAsyncThunk(
+    'auth/customer_login',
+    async(info, { rejectWithValue,fulfillWithValue }) => {
+        try {
+            const {data} = await api.post('/customer/customer-login',info)
+            localStorage.setItem('customerToken',data.token)
+           // console.log(data)
+            return fulfillWithValue(data)
+        } catch (error) {
+            return rejectWithValue(error.response.data)
+        }
+    }
+)
+// End Method 
+
 
 
 export const authReducer = createSlice({
