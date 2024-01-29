@@ -6,7 +6,7 @@ import { FaTwitter } from "react-icons/fa6";
 import { FaLinkedin } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
 import { IoMdArrowDropdown } from "react-icons/io";
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaHeart } from "react-icons/fa6";
 import { FaCartShopping } from "react-icons/fa6";
 import { FaPhoneAlt } from "react-icons/fa";
@@ -14,9 +14,9 @@ import { IoIosArrowDown } from "react-icons/io";
 import { useDispatch, useSelector } from 'react-redux';
 
 const Header = () => {
-
-    const {categorys} = useSelector(state => state.home)
-
+ 
+    const navigate = useNavigate()
+    const {categorys} = useSelector(state => state.home) 
 
     const {pathname} = useLocation()
      
@@ -28,6 +28,10 @@ const Header = () => {
 
     const [searchValue, setSearchValue] = useState('')
     const [category, setCategory] = useState('')
+
+    const search = () => {
+        navigate(`/products/search?category=${category}&&value=${searchValue}`)
+    }
 
     return (
         <div className='w-full bg-white'>
@@ -273,14 +277,12 @@ const Header = () => {
                         <select onChange={(e) => setCategory(e.target.value)} className='w-[150px] text-slate-600 font-semibold bg-transparent px-2 h-full outline-0 border-none' name="" id="">
                             <option value="">Select Category</option>
                             {
-                                categorys.map((c, i) => <option key={i} value={c}>
-                                    {c.name}
-                                </option> )
+                                categorys.map((c, i) => <option key={i} value={c.name}> {c.name} </option> )
                             }
                         </select>
                         </div>
                         <input className='w-full relative bg-transparent text-slate-500 outline-0 px-3 h-full' onChange={(e)=> setSearchValue(e.target.value)} type="text" name='' id='' placeholder='What do you need' />
-                        <button className='bg-[#059473] right-0 absolute px-8 h-full font-semibold uppercase text-white'>Search</button>
+                        <button onClick={search} className='bg-[#059473] right-0 absolute px-8 h-full font-semibold uppercase text-white'>Search</button>
                     </div> 
                 </div>
 
