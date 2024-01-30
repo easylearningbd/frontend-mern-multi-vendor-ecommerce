@@ -21,7 +21,21 @@ export const get_card_products = createAsyncThunk(
     async(userId, { rejectWithValue,fulfillWithValue }) => {
         try {
             const {data} = await api.get(`/home/product/get-card-product/${userId}`) 
-            console.log(data)
+            // console.log(data)
+            return fulfillWithValue(data)
+        } catch (error) {
+            return rejectWithValue(error.response.data)
+        }
+    }
+)
+// End Method 
+
+export const delete_card_product = createAsyncThunk(
+    'card/delete_card_product',
+    async(card_id, { rejectWithValue,fulfillWithValue }) => {
+        try {
+            const {data} = await api.delete(`/home/product/delete-card-product/${card_id}`) 
+            // console.log(data)
             return fulfillWithValue(data)
         } catch (error) {
             return rejectWithValue(error.response.data)
