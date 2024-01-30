@@ -16,6 +16,21 @@ export const add_to_card = createAsyncThunk(
 // End Method 
 
 
+export const get_card_products = createAsyncThunk(
+    'card/get_card_products',
+    async(userId, { rejectWithValue,fulfillWithValue }) => {
+        try {
+            const {data} = await api.get(`/home/product/get-card-product/${userId}`) 
+            console.log(data)
+            return fulfillWithValue(data)
+        } catch (error) {
+            return rejectWithValue(error.response.data)
+        }
+    }
+)
+// End Method 
+
+
 export const cardReducer = createSlice({
     name: 'card',
     initialState:{
