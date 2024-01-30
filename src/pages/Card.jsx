@@ -4,7 +4,8 @@ import Footer from '../components/Footer';
 import { Link, useNavigate } from 'react-router-dom';
 import { IoIosArrowForward } from "react-icons/io";
 import { useDispatch,useSelector } from 'react-redux';
-import { get_card_products,delete_card_product } from '../store/reducers/cardReducer';
+import { get_card_products,delete_card_product,messageClear } from '../store/reducers/cardReducer';
+import toast from 'react-hot-toast';
 
 const Card = () => {
 
@@ -28,6 +29,15 @@ const Card = () => {
             }
         })
     }
+
+    useEffect(() => { 
+        if (successMessage) {
+            toast.success(successMessage)
+            dispatch(messageClear())  
+            dispatch(get_card_products(userInfo.id))
+        } 
+        
+    },[successMessage])
 
     return (
         <div>
