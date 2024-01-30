@@ -42,7 +42,8 @@ export const cardReducer = createSlice({
         errorMessage : '',
         successMessage: '', 
         shipping_fee: 0,
-        outofstock_products : []
+        outofstock_products : [],
+        buy_product_item : 0
     },
     reducers : {
 
