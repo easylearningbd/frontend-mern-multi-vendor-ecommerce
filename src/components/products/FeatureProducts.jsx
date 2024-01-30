@@ -1,17 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { FaEye, FaRegHeart } from "react-icons/fa";
 import { RiShoppingCartLine } from "react-icons/ri";
 import Rating from '../Rating';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch,useSelector } from 'react-redux';
-import { add_to_card } from '../../store/reducers/cardReducer';
-
+import { add_to_card,messageClear } from '../../store/reducers/cardReducer';
+import toast from 'react-hot-toast';
 
 const FeatureProducts = ({products}) => {
 
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const {userInfo } = useSelector(state => state.auth)
+    const {errorMessage,successMessage } = useSelector(state => state.card)
 
     const add_card = (id) => {
         if (userInfo) {
@@ -24,6 +25,18 @@ const FeatureProducts = ({products}) => {
             navigate('/login')
         }
     }
+
+    useEffect(() => { 
+        if (successMessage) {
+            toast.success(successMessage)
+            dispatch(messageClear())  
+        } 
+        if (errorMessage) {
+            toast.error(errorMessage)
+            dispatch(messageClear())  
+        } 
+        
+    },[successMessage,errorMessage])
 
 
     return (
