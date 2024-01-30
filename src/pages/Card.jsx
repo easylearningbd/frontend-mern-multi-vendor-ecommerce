@@ -3,7 +3,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { Link, useNavigate } from 'react-router-dom';
 import { IoIosArrowForward } from "react-icons/io";
-import { useDispatch } from 'react-redux';
+import { useDispatch,useSelector } from 'react-redux';
 import { get_card_products } from '../store/reducers/cardReducer';
 
 const Card = () => {
