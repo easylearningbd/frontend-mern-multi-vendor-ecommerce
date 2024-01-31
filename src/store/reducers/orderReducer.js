@@ -5,9 +5,12 @@ export const place_order = createAsyncThunk(
     'card/place_order',
     async({ price,products,shipping_fee,items,shippingInfo,userId,navigate}) => {
         try {
-            
+            const { data } = await api.post('/home/order/place-order',{
+                price,products,shipping_fee,items,shippingInfo,userId,navigate
+            })
+            console.log(data)
         } catch (error) {
-            
+            console.log(error.response)
         }
         
     }
