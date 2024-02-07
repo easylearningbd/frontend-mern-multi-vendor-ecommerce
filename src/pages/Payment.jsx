@@ -31,10 +31,9 @@ const Payment = () => {
             <img src="http://localhost:3000/images/payment/cod.jpg" alt="" />
             </div>
             <span className='text-slate-600'>COD</span> 
-        </div>                   
-
         </div> 
-           </div>
+        </div> 
+          
            {
             paymentMethod === 'stripe' && <div>
                 <Stripe/>
@@ -45,15 +44,30 @@ const Payment = () => {
                 <button className='px-10 py-[6px] rounded-sm hover:shadow-green-500/20 hover:shadow-lg bg-[#059473] text-white'>Pay Now</button>
             </div>
         }
-           
-
-
-
-
-
-
+            
                 </div> 
             </div> 
+
+        <div className='w-5/12 md:w-full'>
+            <div className='pl-2 md:pl-0 md:mb-0'>
+                <div className='bg-white shadow p-5 text-slate-600 flex flex-col gap-3'>
+        <h2 className='font-bold text-lg'>Order Summary </h2>
+        <div className='flex justify-between items-center'>
+            <span>{items} Items and Shipping Fee Included </span>
+            <span>${price} </span>
+        </div>
+        <div className='flex justify-between items-center font-semibold'>
+            <span>Total Amount </span>
+            <span className='text-lg text-green-600'>${price}</span>
+        </div>
+
+
+
+                </div>
+            </div>
+        </div>
+
+        </div> 
         </div>
 
     </section>
