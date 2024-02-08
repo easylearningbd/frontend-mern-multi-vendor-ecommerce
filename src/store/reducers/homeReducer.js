@@ -58,6 +58,20 @@ export const query_products = createAsyncThunk(
 )
 // End Method 
 
+export const product_details = createAsyncThunk(
+    'product/product_details',
+    async(slug, { fulfillWithValue }) => {
+        try {
+            const {data} = await api.get(`/home/product-details/${slug}`)
+            //  console.log(data)
+            return fulfillWithValue(data)
+        } catch (error) {
+            console.log(error.respone)
+        }
+    }
+)
+// End Method 
+
 
 
 
