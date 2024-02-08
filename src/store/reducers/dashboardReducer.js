@@ -5,7 +5,7 @@ export const get_dashboard_index_data = createAsyncThunk(
     'dashboard/get_dashboard_index_data',
     async(userId, { rejectWithValue,fulfillWithValue }) => {
         try {
-            const {data} = await api.get(`/home/coustomer/get-dashboard-date/${userId}`) 
+            const {data} = await api.get(`/home/coustomer/get-dashboard-data/${userId}`) 
             console.log(data)
             // return fulfillWithValue(data)
         } catch (error) {
