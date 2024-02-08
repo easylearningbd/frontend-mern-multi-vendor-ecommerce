@@ -14,7 +14,7 @@ import { IoIosArrowDown } from "react-icons/io";
 import { useDispatch, useSelector } from 'react-redux';
 
 const Header = () => {
- 
+  
     const navigate = useNavigate()
     const {categorys} = useSelector(state => state.home) 
     const {userInfo} = useSelector(state => state.auth) 
