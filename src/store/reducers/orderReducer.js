@@ -37,6 +37,20 @@ export const get_orders = createAsyncThunk(
     }
 )
 // End Method 
+
+export const get_order_details = createAsyncThunk(
+    'order/get_order_details',
+    async(orderId , { rejectWithValue,fulfillWithValue }) => {
+        try {
+            const {data} = await api.get(`/home/coustomer/get-order-details/${orderId}`) 
+            // console.log(data)
+            return fulfillWithValue(data)
+        } catch (error) {
+            return rejectWithValue(error.response.data)
+        }
+    }
+)
+// End Method 
  
 
 
