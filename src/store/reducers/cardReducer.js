@@ -140,6 +140,15 @@ export const cardReducer = createSlice({
         .addCase(quantity_dec.fulfilled, (state, { payload }) => { 
             state.successMessage = payload.message;  
         })
+
+        .addCase(add_to_wishlist.rejected, (state, { payload }) => {
+            state.errorMessage = payload.error; 
+        })
+        .addCase(add_to_wishlist.fulfilled, (state, { payload }) => { 
+            state.successMessage = payload.message; 
+            state.wishlist_count = state.wishlist_count > 0 ? state.wishlist_count + 1 : 1   
+            
+        })
         
     }
 })
