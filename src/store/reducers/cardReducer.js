@@ -74,6 +74,21 @@ export const quantity_dec = createAsyncThunk(
 // End Method 
 
 
+export const add_to_wishlist = createAsyncThunk(
+    'wishlist/add_to_wishlist',
+    async(info, { rejectWithValue,fulfillWithValue }) => {
+        try {
+            const {data} = await api.post('/home/product/add-to-wishlist',info) 
+            // console.log(data)
+            return fulfillWithValue(data)
+        } catch (error) {
+            return rejectWithValue(error.response.data)
+        }
+    }
+)
+// End Method 
+
+
 export const cardReducer = createSlice({
     name: 'card',
     initialState:{
