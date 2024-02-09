@@ -297,22 +297,22 @@ const Details = () => {
     </div>
     <div className='flex flex-col gap-5 mt-3 border p-3'>
         {
-            [1,2,3].map((p,i) => {
+            moreProducts.map((p,i) => {
                 return (
         <Link className='block'>
             <div className='relative h-[270px]'>
-            <img className='w-full h-full' src={`http://localhost:3000/images/products/${p}.webp`} alt="" /> 
+            <img className='w-full h-full' src={ p.images[0]} alt="" /> 
             {
-            discount !== 0 && <div className='flex justify-center items-center absolute text-white w-[38px] h-[38px] rounded-full bg-red-500 font-semibold text-xs left-2 top-2'>{discount}%
+            p.discount !== 0 && <div className='flex justify-center items-center absolute text-white w-[38px] h-[38px] rounded-full bg-red-500 font-semibold text-xs left-2 top-2'>{p.discount}%
             </div>
             }
             </div>
 
-            <h2 className='text-slate-600 py-1 font-bold'>Product Name </h2>
+            <h2 className='text-slate-600 py-1 font-bold'>{p.name} </h2>
             <div className='flex gap-2'>
-                <h2 className='text-lg font-bold text-slate-600'>$434</h2>
+                <h2 className='text-lg font-bold text-slate-600'>${p.price}</h2>
                 <div className='flex items-center gap-2'>
-                    <Rating ratings={4.5}  />
+                    <Rating ratings={p.rating}  />
                 </div>
             </div>
             
@@ -355,29 +355,29 @@ const Details = () => {
     > 
 
     {
-        [1,2,3,4,5,6].map((p, i) => {
+        relatedProducts.map((p, i) => {
             return (
 
                 <SwiperSlide key={i}>
                     <Link className='block'>
                         <div className='relative h-[270px]'>
                             <div className='w-full h-full'>
-                    <img className='w-full h-full' src={`http://localhost:3000/images/products/${p}.webp`} alt="" />
+                    <img className='w-full h-full' src={p.images[0] } alt="" />
                     <div className='absolute h-full w-full top-0 left-0 bg-[#000] opacity-25 hover:opacity-50 transition-all duration-500'> 
                     </div>
                            </div>
             {
-            discount !== 0 && <div className='flex justify-center items-center absolute text-white w-[38px] h-[38px] rounded-full bg-red-500 font-semibold text-xs left-2 top-2'>{discount}%
+            p.discount !== 0 && <div className='flex justify-center items-center absolute text-white w-[38px] h-[38px] rounded-full bg-red-500 font-semibold text-xs left-2 top-2'>{p.discount}%
             </div>
             } 
                 </div>
 
             <div className='p-4 flex flex-col gap-1'>
-            <h2 className='text-slate-600 text-lg font-bold'>Product Name </h2>
+            <h2 className='text-slate-600 text-lg font-bold'>{p.name} </h2>
             <div className='flex justify-start items-center gap-3'>
-                <h2 className='text-lg font-bold text-slate-600'>$434</h2>
+                <h2 className='text-lg font-bold text-slate-600'>${p.price}</h2>
                 <div className='flex'>
-                    <Rating ratings={4.5}  />
+                    <Rating ratings={p.rating}  />
                 </div>
             </div>
             </div>
