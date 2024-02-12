@@ -166,6 +166,12 @@ export const homeReducer = createSlice({
             state.successMessage = payload.message;
         })
 
+        .addCase(get_reviews.fulfilled, (state, { payload }) => {
+            state.reviews = payload.reviews;
+            state.totalReview = payload.totalReview;
+            state.rating_review = payload.rating_review;
+        })
+
     }
 })
 export const {messageClear} = homeReducer.actions
