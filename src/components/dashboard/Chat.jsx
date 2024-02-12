@@ -2,9 +2,15 @@ import React from 'react';
 import { AiOutlineMessage, AiOutlinePlus } from 'react-icons/ai'
 import { GrEmoji } from 'react-icons/gr'
 import { IoSend } from 'react-icons/io5'
-import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux';
+import { Link, useParams } from 'react-router-dom'
 
 const Chat = () => {
+
+    const {sellerId} = useParams()
+    const {userInfo } = useSelector(state => state.auth)
+  
+
     return (
         <div className='bg-white p-3 rounded-md'>
     <div className='w-full flex'>
