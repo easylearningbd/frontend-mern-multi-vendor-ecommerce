@@ -44,7 +44,7 @@ const Dashboard = () => {
                 </li>
                 <li className='flex justify-start items-center gap-2 py-2'>
             <span className='text-xl'><IoChatbubbleEllipsesSharp/></span>
-            <Link to='/dashboard' className='block' >Chat  </Link>
+            <Link to='/dashboard/chat' className='block' >Chat  </Link>
                 </li>
                 <li className='flex justify-start items-center gap-2 py-2'>
             <span className='text-xl'><RiLockPasswordLine/></span>
