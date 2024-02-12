@@ -123,7 +123,7 @@ export const homeReducer = createSlice({
         moreProducts: [],
         errorMessage : '',
         successMessage: '',
-        totalReivew: 0,
+        totalReview: 0,
         rating_review: [],
         reviews : [] 
     },
