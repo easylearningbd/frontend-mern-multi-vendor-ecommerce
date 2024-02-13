@@ -36,13 +36,12 @@ export const chatReducer = createSlice({
  
     },
     extraReducers: (builder) => {
-        // builder 
-        // .addCase(customer_register.fulfilled, (state, { payload }) => {
-        //     const userInfo = decodeToken(payload.token)
-        //     state.successMessage = payload.message;
-        //     state.loader = false;
-        //     state.userInfo = userInfo
-        // })
+        builder 
+        .addCase(add_friend.fulfilled, (state, { payload }) => { 
+            state.fb_messages = payload.messages;
+            state.currentFd = payload.currentFd;
+            state.my_friends = payload.MyFriends;
+        })
 
        
     }
