@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { AiOutlineMessage, AiOutlinePlus } from 'react-icons/ai'
 import { GrEmoji } from 'react-icons/gr'
 import { IoSend } from 'react-icons/io5'
@@ -11,6 +11,8 @@ import io from 'socket.io-client'
 const socket = io('http://localhost:5000')
 
 const Chat = () => {
+
+    const scrollRef = useRef()
 
     const dispatch = useDispatch()
     const {sellerId} = useParams()
@@ -71,7 +73,9 @@ const Chat = () => {
 
     },[receverMessage])
     
-  
+    useEffect(() => {
+        scrollRef.current?.scrollIntoView({ behavior: 'smooth'})
+    },[fb_messages])
 
     return (
         <div className='bg-white p-3 rounded-md'>
@@ -119,7 +123,7 @@ const Chat = () => {
             fb_messages.map((m, i) => {
                 if (currentFd?.fdId !== m.receverId) {
                     return(
-                 <div key={i} className='w-full flex gap-2 justify-start items-center text-[14px]'>
+                 <div ref={scrollRef} key={i} className='w-full flex gap-2 justify-start items-center text-[14px]'>
             <img className='w-[30px] h-[30px] ' src="http://localhost:3000/images/user.png" alt="" />
             <div className='p-2 bg-purple-500 text-white rounded-md'>
                 <span>{m.message}</span>
@@ -128,7 +132,7 @@ const Chat = () => {
               )     
                 }else{ 
                   return (
-                    <div key={i} className='w-full flex gap-2 justify-end items-center text-[14px]'>
+                    <div ref={scrollRef} key={i} className='w-full flex gap-2 justify-end items-center text-[14px]'>
                     <img className='w-[30px] h-[30px] ' src="http://localhost:3000/images/user.png" alt="" />
                     <div className='p-2 bg-cyan-500 text-white rounded-md'>
                         <span>{m.message}</span>
