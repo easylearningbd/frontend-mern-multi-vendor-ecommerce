@@ -53,6 +53,13 @@ const Chat = () => {
     },[])
 
     useEffect(() => {
+        if (successMessage) {
+            socket.emit('send_customer_message',fb_messages[fb_messages.length - 1])
+            dispatch(messageClear())
+        }
+    },[successMessage])
+
+    useEffect(() => {
         if (receverMessage) {
             if (sellerId === receverMessage.senderId && userInfo.id === receverMessage.receverId) {
                 dispatch(updateMessage(receverMessage))
