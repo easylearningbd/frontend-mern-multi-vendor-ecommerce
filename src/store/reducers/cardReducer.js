@@ -196,5 +196,5 @@ export const cardReducer = createSlice({
         
     }
 })
-export const {messageClear} = cardReducer.actions
+export const {messageClear,reset_count} = cardReducer.actions
 export default cardReducer.reducer
