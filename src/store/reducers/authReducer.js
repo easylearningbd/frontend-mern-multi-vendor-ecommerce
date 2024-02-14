@@ -23,7 +23,7 @@ export const customer_login = createAsyncThunk(
         try {
             const {data} = await api.post('/customer/customer-login',info)
             localStorage.setItem('customerToken',data.token)
-           // console.log(data)
+           // console.log(data) 
             return fulfillWithValue(data)
         } catch (error) {
             return rejectWithValue(error.response.data)
@@ -57,6 +57,9 @@ export const authReducer = createSlice({
         messageClear : (state,_) => {
             state.errorMessage = ""
             state.successMessage = ""
+        },
+        user_reset: (state,_) => {
+            state.userInfo = ""
         }
  
     },

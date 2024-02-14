@@ -137,6 +137,10 @@ export const cardReducer = createSlice({
         messageClear : (state,_) => {
             state.errorMessage = ""
             state.successMessage = ""
+        },
+        reset_count: (state,_) => {
+            state.card_product_count = 0
+            state.wishlist_count = 0
         }
  
     },
