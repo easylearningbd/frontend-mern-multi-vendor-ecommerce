@@ -14,7 +14,7 @@ export const add_to_card = createAsyncThunk(
     }
 )
 // End Method 
-
+ 
 
 export const get_card_products = createAsyncThunk(
     'card/get_card_products',
