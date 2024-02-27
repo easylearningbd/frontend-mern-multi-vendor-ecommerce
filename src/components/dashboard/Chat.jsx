@@ -7,6 +7,7 @@ import { Link, useParams } from 'react-router-dom'
 import { add_friend, messageClear, send_message,updateMessage } from '../../store/reducers/chatReducer';
 import toast from 'react-hot-toast';
 import io from 'socket.io-client'
+import {FaList} from 'react-icons/fa'
 
 const socket = io('http://localhost:5000')
 
@@ -21,6 +22,7 @@ const Chat = () => {
     const [text,setText] = useState('')
     const [receverMessage,setReceverMessage] = useState('')
     const [activeSeller,setActiveSeller] = useState([])
+    const [show, setShow] = useState(false)
     
     useEffect(() => {
         socket.emit('add_user',userInfo.id, userInfo)
@@ -80,7 +82,8 @@ const Chat = () => {
     return (
         <div className='bg-white p-3 rounded-md'>
     <div className='w-full flex'>
-        <div className='w-[230px]'>
+        
+        <div className={`w-[230px] md-lg:absolute bg-white md-lg:h-full -left-[350px] ${show ? '-left-0' : '-left-[350px]'}`}>
             <div className='flex justify-center gap-3 items-center text-slate-600 text-xl h-[50px]'>
                 <span><AiOutlineMessage /></span>
                 <span>Message</span>
@@ -102,19 +105,27 @@ const Chat = () => {
                 
             </div>
         </div>
-        <div className='w-[calc(100%-230px)]'>
+
+        <div className='w-[calc(100%-230px)] md-lg:w-full'>
             {
                 currentFd ? <div className='w-full h-full'>
-                <div className='flex justify-start gap-3 items-center text-slate-600 text-xl h-[50px]'>
-                    <div className='w-[30px] h-[30px] rounded-full relative'>
+                <div className='flex justify-between gap-3 items-center text-slate-600 text-xl h-[50px]'>
+           
+            <div className='flex gap-2'>
+            <div className='w-[30px] h-[30px] rounded-full relative'>
             {
             activeSeller.some(c => c.sellerId === currentFd.fdId) && <div className='w-[10px] h-[10px] rounded-full bg-green-500 absolute right-0 bottom-0'></div>
-            }
-                        
-                        
-                        <img src={currentFd.image} />
+            } 
+              <img src={currentFd.image} />
                     </div>
                     <span>{currentFd.name}</span>
+                
+            </div> 
+
+                <div onClick={()=> setShow(!show)} className='w-[35px] h-[35px] hidden md-lg:flex cursor-pointer rounded-sm justify-center items-center bg-sky-500 text-white'>
+                    <FaList/>
+                </div>      
+               
                 </div>
                 <div className='h-[400px] w-full bg-slate-100 p-3 rounded-md'>
                     <div className='w-full h-full overflow-y-auto flex flex-col gap-3'>
@@ -162,7 +173,7 @@ const Chat = () => {
                         </div>
                     </div>
                 </div>
-            </div> : <div className='w-full h-full flex justify-center items-center text-lg ont-bold text-slate-600'>
+            </div> : <div onClick={() => setShow(true)} className='w-full h-[400px] flex justify-center items-center text-lg ont-bold text-slate-600'>
                 <span>Select Seller</span>
             </div>
             }
