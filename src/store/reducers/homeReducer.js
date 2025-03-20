@@ -4,26 +4,28 @@ import api from "../../api/api";
 
 export const get_category = createAsyncThunk(
     'product/get_category',
-    async(_, { fulfillWithValue }) => {
+    async(_, { fulfillWithValue, rejectWithValue }) => {
         try {
             const {data} = await api.get('/home/get-categorys')
             // console.log(data)
             return fulfillWithValue(data)
         } catch (error) {
             console.log(error.respone)
+            return rejectWithValue(error)
         }
     }
 )
 // End Method 
 export const get_products = createAsyncThunk(
     'product/get_products',
-    async(_, { fulfillWithValue }) => {
+    async(_, { fulfillWithValue,rejectWithValue }) => {
         try {
             const {data} = await api.get('/home/get-products')
              console.log(data)
             return fulfillWithValue(data)
         } catch (error) {
             console.log(error.respone)
+            return rejectWithValue(error)
         }
     }
 )
@@ -32,13 +34,14 @@ export const get_products = createAsyncThunk(
 
 export const price_range_product = createAsyncThunk(
     'product/price_range_product',
-    async(_, { fulfillWithValue }) => {
+    async(_, { fulfillWithValue,rejectWithValue }) => {
         try {
             const {data} = await api.get('/home/price-range-latest-product')
              console.log(data)
             return fulfillWithValue(data)
         } catch (error) {
             console.log(error.respone)
+            return rejectWithValue(error)
         }
     }
 )
@@ -46,13 +49,14 @@ export const price_range_product = createAsyncThunk(
 
 export const query_products = createAsyncThunk(
     'product/query_products',
-    async(query , { fulfillWithValue }) => {
+    async(query , { fulfillWithValue,rejectWithValue }) => {
         try {
             const {data} = await api.get(`/home/query-products?category=${query.category}&&rating=${query.rating}&&lowPrice=${query.low}&&highPrice=${query.high}&&sortPrice=${query.sortPrice}&&pageNumber=${query.pageNumber}&&searchValue=${query.searchValue ? query.searchValue : ''} `)
             //  console.log(data)
             return fulfillWithValue(data)
         } catch (error) {
             console.log(error.respone)
+            return rejectWithValue(error)
         }
     }
 )
@@ -60,13 +64,14 @@ export const query_products = createAsyncThunk(
 
 export const product_details = createAsyncThunk(
     'product/product_details',
-    async(slug, { fulfillWithValue }) => {
+    async(slug, { fulfillWithValue,rejectWithValue }) => {
         try {
             const {data} = await api.get(`/home/product-details/${slug}`)
             //  console.log(data)
             return fulfillWithValue(data)
         } catch (error) {
             console.log(error.respone)
+            return rejectWithValue(error)
         }
     }
 )
@@ -74,13 +79,14 @@ export const product_details = createAsyncThunk(
 
 export const customer_review = createAsyncThunk(
     'review/customer_review',
-    async(info, { fulfillWithValue }) => {
+    async(info, { fulfillWithValue,rejectWithValue }) => {
         try {
             const {data} = await api.post('/home/customer/submit-review',info)
             //  console.log(data)
             return fulfillWithValue(data)
         } catch (error) {
             console.log(error.respone)
+            return rejectWithValue(error)
         }
     }
 )
@@ -89,13 +95,14 @@ export const customer_review = createAsyncThunk(
 
 export const get_reviews = createAsyncThunk(
     'review/get_reviews',
-    async({productId, pageNumber}, { fulfillWithValue }) => {
+    async({productId, pageNumber}, { fulfillWithValue,rejectWithValue }) => {
         try {
             const {data} = await api.get(`/home/customer/get-reviews/${productId}?pageNo=${pageNumber}`)
             //  console.log(data)
             return fulfillWithValue(data)
         } catch (error) {
             console.log(error.respone)
+            return rejectWithValue(error)
         }
     }
 )
@@ -104,13 +111,14 @@ export const get_reviews = createAsyncThunk(
 
 export const get_banners = createAsyncThunk(
     'banner/get_banners',
-    async( _ , { fulfillWithValue }) => {
+    async( _ , { fulfillWithValue,rejectWithValue }) => {
         try {
             const {data} = await api.get(`/banners`)
             //  console.log(data)
             return fulfillWithValue(data)
         } catch (error) {
             console.log(error.respone)
+            return rejectWithValue(error)
         }
     }
 )
