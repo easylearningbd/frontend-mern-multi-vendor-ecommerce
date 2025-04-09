@@ -1,6 +1,6 @@
 import axios from "axios";
 const local = 'http://localhost:5000'
-const production = 'http://localhost:6000'
+const production = 'https://backend-ecommerce-api-lfrf.onrender.com'
 
 let api_url = ''
 let mode = 'pro'
