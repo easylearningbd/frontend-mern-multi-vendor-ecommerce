@@ -1,6 +1,6 @@
 import axios from "axios";
 const local = 'http://localhost:5000'
-const production = 'https://backend-mern-vendor-ecommerce.onrender.com'
+const production = 'https://backend-mern-multi-vendor-ecommerce1.onrender.com'
 
 let api_url = ''
 let mode = 'pro'
@@ -16,10 +16,6 @@ const api = axios.create({
     baseURL : `${api_url}/api`
 })
 
-// for socket.io
-import { io } from "socket.io-client";
-export const socket = io(api_url, {
-    withCredentials: true
-});
+
 
 export default api
