@@ -16,4 +16,10 @@ const api = axios.create({
     baseURL : `${api_url}/api`
 })
 
+// for socket.io
+import { io } from "socket.io-client";
+export const socket = io(api_url, {
+    withCredentials: true
+});
+
 export default api
